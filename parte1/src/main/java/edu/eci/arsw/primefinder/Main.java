@@ -4,9 +4,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		PrimeFinderThread pft=new PrimeFinderThread(0, 30000000);
-		
-		pft.start();
+
+		ParallelCalculation T0 = new ParallelCalculation(0, 30000000);
+		TO.calculate();
 		
 		
 	}
