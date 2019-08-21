@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package edu.eci.arsw.primefinder;
+
+import java.util.List;
+
 /**
  *
  * @author 2099190
@@ -17,8 +20,8 @@ public class ParallelCalculation {
     private final int[] array;
 
     public ParallelCalculation(int a, int b) {
-        this.a = A;
-        this.b = B;
+        this.A = a;
+        this.B = b;
         this.array = new int[3];
         digits = B-A;
         //calcular tamaño cada hilo
@@ -34,9 +37,9 @@ public class ParallelCalculation {
         }
     }
     
-    public String calculate() throws InterruptedException{
+    public List<Integer>[] calculate() throws InterruptedException{
         
-        ThreadPi threads[] = new PrimeFinderThread[3];
+        PrimeFinderThread threads[] = new PrimeFinderThread[3];
         width = 1.0 / (double) digits;
 
         for (int i=0; i < 3; i++){
@@ -49,10 +52,10 @@ public class ParallelCalculation {
         
         //Join all the threads
        
-        String res = "";
+        List<Integer>[] res = null;
         for (int i = 0; i < 3; i++) {
             threads[i].join();
-            res += threads[i].getValue();
+            res[i] = threads[i].getPrimes();
         }
        
         System.out.println("\nRes: "+res+"\n");

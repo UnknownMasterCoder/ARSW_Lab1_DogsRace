@@ -39,6 +39,8 @@ public class PrimeFinderThread extends Thread{
 	public List<Integer> getPrimes() {
 		return primes;
 	}
+        
+        
 	
 	
 	
